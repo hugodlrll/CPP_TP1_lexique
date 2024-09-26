@@ -3,11 +3,10 @@
 #include <algorithm>
 #include <map>
 #include <cstring>
+
 using namespace std;
 
-#include "utilitaire.hpp"
-
-
+#include "Utilitaire.hpp"
 
 /**
  Lit le fichier dans le chemin d'entrée path et met son contenu sous forme d'une string dans content
@@ -30,7 +29,11 @@ void readFileIntoString(const string& path, string & content) {
 void remove_punctuation(string &word) {
     for (int i = 0, len = word.size(); i < len; i++)
     {
-        // check whether parsing character is punctuation or not
+        if(to_string(word[i]) == "\n")
+        {
+            word.erase(i--, 1);
+            len = word.size();
+        }
         if (ispunct(word[i]))
         {
             word.erase(i--, 1);
@@ -38,6 +41,7 @@ void remove_punctuation(string &word) {
         }
     }
 }
+
 /**
  Mets la chaine de caractères passée en paramètre en minuscules
  */
