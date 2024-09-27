@@ -2,12 +2,14 @@
 #include "Utilitaire.hpp"
 #include "Lexique.hpp"
 
+using namespace std;
+
 int main ()
 {
-    std::string filepath = "../notreDameDeParis_A.txt";
-    std::string savepath = "../save.txt";
+    string filepath = "notreDameDeParis_A.txt";
+    string savepath = "save.txt";
     Lexique Patate("Notre Dame");
     Patate.extract(filepath);
     Patate.saveLexique(savepath);
-    std::cout << Patate << std::endl;
+    cout << "Nombre d'entrées : " << Patate.wordCount() << endl;
 }

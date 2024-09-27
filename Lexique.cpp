@@ -67,7 +67,7 @@ void Lexique::saveLexique(string & filepath)
     output_file << "mot :               occurences :\n";
     for(auto it = list.begin(); it != list.end(); ++it)
     {
-        output_file << it->first << " " << it->second << endl; 
+        output_file << "Mot : " << it->first << " | Nombre d'occurrences : " << it->second << endl; 
     }
     output_file.close();
 }
