@@ -24,7 +24,6 @@ void Lexique::extract(string & filepath)
     readFileIntoString(filepath, content);
     remove_punctuation(content);
     toLower(content);
-    //content.erase(remove(content.begin(), content.end(), '\n'), content.cend());
     stringstream ss(content);
     while (getline(ss, word, delimiter)) {
         
@@ -37,7 +36,7 @@ void Lexique::extract(string & filepath)
     }
 }
 
-int Lexique::wordExist(string & word)
+int Lexique::wordExist(string word)
 {
     if (list.count(word) == 0)
         return 0;
@@ -64,10 +63,10 @@ void Lexique::saveLexique(string & filepath)
              << filepath << "'" << endl;
         exit(EXIT_FAILURE);
     }
-    output_file << "mot :               occurences :\n";
+    output_file << "MOTS :\t\t\tOCCURENCES :\n\n";
     for(auto it = list.begin(); it != list.end(); ++it)
     {
-        output_file << "Mot : " << it->first << " | Nombre d'occurrences : " << it->second << endl; 
+        output_file << it->first << "\t\t\t" << it->second << endl; 
     }
     output_file.close();
 }
@@ -88,4 +87,25 @@ ostream& operator<<(ostream & os,  Lexique const& lex) {
         os << pair.first << " : " << pair.second << "\n";
     }
     return os;
+}
+
+void operator+=(Lexique & lex1, Lexique & lex2)
+{
+    map<string,int> listeLex2 = lex2.getMap();
+    for(auto it = listeLex2.begin(); it != listeLex2.end(); ++it)
+    {
+        if(lex1.wordExist(it->first)!=0)
+        {
+            lex1.getMap()[it->first]+=it->second;
+        }
+        else
+        {
+            lex1.getMap().insert({it->first, it->second});
+        }
+    }
+}
+
+Lexique& operator-=(Lexique lex1, Lexique lex2)
+{
+    
 }

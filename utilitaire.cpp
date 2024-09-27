@@ -29,10 +29,9 @@ void readFileIntoString(const string& path, string & content) {
 void remove_punctuation(string &word) {
     for (int i = 0, len = word.size(); i < len; i++)
     {
-        if(to_string(word[i]) == "\n")
+        if(word[i] == '\n')
         {
-            word.erase(i--, 1);
-            len = word.size();
+            word[i] = ' ';
         }
         if (ispunct(word[i]))
         {
