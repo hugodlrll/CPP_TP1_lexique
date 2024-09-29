@@ -44,7 +44,7 @@ int Lexique::wordExist(string word)
         return list[word];
 }
 
-void Lexique::wordDel(string & word)
+void Lexique::wordDel(string word)
 {
     list.erase(list.find(word));
     cout << "Le mot " << word << "a ete supprime du lexique !";
@@ -105,7 +105,14 @@ void operator+=(Lexique & lex1, Lexique & lex2)
     }
 }
 
-Lexique& operator-=(Lexique lex1, Lexique lex2)
+void operator-=(Lexique & lex1, Lexique & lex2)
 {
-    
+    map<string,int> listeLex2 = lex2.getMap();
+    for(auto it = listeLex2.begin(); it != listeLex2.end(); ++it)
+    {
+        if(lex1.wordExist(it->first)!=0)
+        {
+            lex1.wordDel(it->first);
+        }
+    }
 }

@@ -6,11 +6,11 @@ using namespace std;
 
 int main ()
 {
-    string filepath = "test1.txt"; //"notreDameDeParis_A.txt";
-    string filepath2 = "test.txt"; //"lesMiserables_A.txt";
-    string savepath = "save.txt";
-    string savepath1 = "save1.txt";
-    string savepath2 = "save2.txt";
+    string filepath = "../test1.txt"; //"notreDameDeParis_A.txt";
+    string filepath2 = "../test.txt"; //"lesMiserables_A.txt";
+    string savepath = "../save.txt";
+    string savepath1 = "../save1.txt";
+    string savepath2 = "../save2.txt";
     Lexique Patate("Notre Dame");
     Lexique Carotte("Les Miserables");
     Lexique Choux("somme");

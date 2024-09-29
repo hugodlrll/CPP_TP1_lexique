@@ -13,7 +13,7 @@ class Lexique
         void extract(std::string & filepath);
         void saveLexique(std::string & filepath);
         int wordCount();
-        void wordDel(std::string & word);
+        void wordDel(std::string word);
         int wordExist(std::string word);
         std::string getName();
         std::map<std::string,int> getMap() const;
@@ -24,6 +24,6 @@ class Lexique
 
 std::ostream& operator<<(std::ostream & os,  Lexique const& lex);
 void operator+=(Lexique & lex1, Lexique & lex2);
-Lexique& operator-=(Lexique & lex1, Lexique & lex2);
+void operator-=(Lexique & lex1, Lexique & lex2);
 
 #endif /* lexique.hpp */
